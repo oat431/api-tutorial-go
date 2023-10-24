@@ -8,3 +8,13 @@ import (
 func GetAllUsers() []response.UserDto {
 	return utils.MockUsers()
 }
+
+func GetUserById(id int) response.UserDto {
+	users := utils.MockUsers()
+	for _, user := range users {
+		if user.ID == id {
+			return user
+		}
+	}
+	return response.UserDto{}
+}
