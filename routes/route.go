@@ -13,5 +13,12 @@ func SetupRouter() *gin.Engine {
 	{
 		v1.GET("/hello-world", controllers.HelloWorld)
 	}
+
+	user := r.Group("/api/v1/users")
+	{
+		user.GET("/", controllers.GetAllUsers)
+		user.GET("/:id", controllers.GetUserById)
+	}
+
 	return r
 }

@@ -6,5 +6,5 @@ import (
 
 func main() {
 	r := routes.SetupRouter()
-	r.Run()
+	r.Run(":5000")
 }
