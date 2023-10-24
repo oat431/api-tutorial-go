@@ -36,3 +36,58 @@ you should see a resposne like this:
     "message": "Hello World"
 }
 ```
+
+## Chapter 2: Basic API
+
+In this chapter just create a basic API with gin-gonic (mock the data for now)
+
+you can check the code in the branch `chapter-2-basic-api`
+
+on this chapter we create the following endpoints:
+
+### Endpoints
+
+- POST: `api/v1/users/` : create a new user
+- GET : `api/v1/users/` : get all the users
+- GET : `api/v1/users/<id>` : get a specific user
+- PUT : `api/v1/users/<id>` : update a specific user
+- DELETE : `api/v1/users/<id>` : delete a specific user
+
+### project structure:
+
+``` bash
+api-tutorial-go/
+├─ controllers/
+│  ├─ user-controller.go
+│  
+├─ models/
+│  ├─ user.go
+│  
+├─ payload/
+│  ├─ request/
+│  │  ├─ user-request.go
+│  ├─ response/
+│  │  ├─ user-dto.go
+│  
+├─ routes/
+│  ├─ route.go
+│  
+├─ services/
+│  ├─ user-service.go
+│  
+├─ utils/
+│  ├─ dto-helper.go
+│  ├─ mock-users.go
+
+```
+
+### Simple API Implementation
+
+1. Create a model
+2. Create a DTO (Data Transfer Object)
+3. Create a Request
+4. Create a Service (Business Logic)
+5. Create a Controller and link it  with the Service
+6. Link the controller with the routes
+
+and all the rest is learning by this example
