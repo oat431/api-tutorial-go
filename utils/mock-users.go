@@ -42,3 +42,36 @@ func MockUsers() []response.UserDto {
 	return usersDto
 
 }
+
+func MockRawUsers() []models.User {
+	user1 := models.User{
+		ID:        1,
+		Firstname: "John",
+		Lastname:  "Doe",
+		Email:     "oat431@email1.com",
+		Birthday:  "1999-01-01",
+	}
+
+	user2 := models.User{
+		ID:        2,
+		Firstname: "Jane",
+		Lastname:  "Doe",
+		Email:     "oat432@email2.com",
+		Birthday:  "1998-01-02",
+	}
+
+	user3 := models.User{
+		ID:        3,
+		Firstname: "James",
+		Lastname:  "Doe",
+		Email:     "oat433@email3.com",
+		Birthday:  "1997-01-03",
+	}
+
+	var users []models.User
+	users = append(users, user1)
+	users = append(users, user2)
+	users = append(users, user3)
+
+	return users
+}
