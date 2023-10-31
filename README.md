@@ -7,9 +7,10 @@
 1. Chapter 1: Project Setup
 2. Chapter 2: Basic API
 3. Chapter 3: Playing with Database
-4. Chapter 4: CORS
-5. Chapter 5: GraphQL
-6. Chapter 6: Testing
+4. Chapter 4: API Doc with Swagger
+5. Chapter 4: CORS
+6. Chapter 5: GraphQL
+7. Chapter 6: Testing
 
 ## Project
 Todo List Project
