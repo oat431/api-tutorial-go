@@ -8,8 +8,16 @@
 2. Chapter 2: Basic API
 3. Chapter 3: Playing with Database
 4. Chapter 4: CORS
-5. Chapter 5: Testing
-6. Chapter 6: Todo List Project
+5. Chapter 5: GraphQL
+6. Chapter 6: Testing
+
+## Project
+Todo List Project
+- CRUD todolsit
+- CRUD sub task
+
+## Deploy site
+- on render
 
 ## Chapter 1: Project Setup
 
