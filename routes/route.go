@@ -23,5 +23,11 @@ func SetupRouter() *gin.Engine {
 		user.DELETE("/:id", controllers.DeleteUser)
 	}
 
+	userV2 := r.Group("/api/v2/users")
+	{
+		userV2.GET("/", controllers.GetAllDBUsers)
+		userV2.GET("/:id", controllers.GetAllDBUsersById)
+	}
+
 	return r
 }
