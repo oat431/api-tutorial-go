@@ -8,7 +8,7 @@ import (
 
 func main() {
 	r := routes.SetupRouter()
-	log.Println("Router created")
-
-	r.Run(":5000")
+	log.Println("CORS setup")
+	log.Println("Router setup")
+	r.Run(":8080")
 }
