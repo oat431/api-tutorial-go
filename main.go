@@ -1,10 +1,14 @@
 package main
 
 import (
+	"log"
+
 	"github.com/oat431/api-tutorial-go/routes"
 )
 
 func main() {
 	r := routes.SetupRouter()
-	r.Run(":5000")
+	log.Println("CORS setup")
+	log.Println("Router setup")
+	r.Run(":8080")
 }
