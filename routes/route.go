@@ -1,9 +1,22 @@
 package routes
 
 import (
-	"github.com/gin-gonic/gin"
+	"log"
 
+	"github.com/gin-gonic/gin"
+	"github.com/oat431/api-tutorial-go/configs"
 	"github.com/oat431/api-tutorial-go/controllers"
+	"github.com/oat431/api-tutorial-go/dao"
+	"github.com/oat431/api-tutorial-go/repository"
+	"github.com/oat431/api-tutorial-go/services"
+)
+
+var (
+	DB             = configs.ConnectDB()
+	userRepository = repository.CreateUserRepository(DB)
+	userDao        = dao.CreateUserV2Repository(userRepository)
+	userService    = services.CreateUserV2Dao(userDao)
+	userController = controllers.CreateUserV2Service(userService)
 )
 
 func SetupRouter() *gin.Engine {
@@ -25,9 +38,10 @@ func SetupRouter() *gin.Engine {
 
 	userV2 := r.Group("/api/v2/users")
 	{
-		userV2.GET("/", controllers.GetAllDBUsers)
-		userV2.GET("/:id", controllers.GetAllDBUsersById)
+		userV2.GET("/", userController.GetAllDBUsers)
+		userV2.GET("/:id", userController.GetAllDBUsersById)
 	}
+	log.Println("Database connected")
 
 	return r
 }
