@@ -3,6 +3,7 @@ package routes
 import (
 	"log"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/oat431/api-tutorial-go/configs"
 	"github.com/oat431/api-tutorial-go/controllers"
@@ -21,6 +22,7 @@ var (
 
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
+	r.Use(cors.New(configs.SetupCORS()))
 
 	v1 := r.Group("/api/v1")
 	{
