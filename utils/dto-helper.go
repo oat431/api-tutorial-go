@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/oat431/api-tutorial-go/models"
+	"github.com/oat431/api-tutorial-go/payload/request"
 	"github.com/oat431/api-tutorial-go/payload/response"
 )
 
@@ -22,5 +23,14 @@ func MapToUserDto(user models.User) response.UserDto {
 		Name:  user.Firstname + " " + user.Lastname,
 		Email: user.Email,
 		Age:   GetAge(user),
+	}
+}
+
+func MapToUserModel(request request.UserRequest) models.User {
+	return models.User{
+		Firstname: request.Firstname,
+		Lastname:  request.Lastname,
+		Email:     request.Email,
+		Birthday:  request.Birthday,
 	}
 }

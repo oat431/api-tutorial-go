@@ -40,6 +40,9 @@ func SetupRouter() *gin.Engine {
 	{
 		userV2.GET("/", userController.GetAllDBUsers)
 		userV2.GET("/:id", userController.GetAllDBUsersById)
+		userV2.POST("/", userController.CreateUser)
+		userV2.PUT("/:id", userController.UpdateUser)
+		userV2.DELETE("/:id", userController.DeleteUser)
 	}
 	log.Println("Database connected")
 
