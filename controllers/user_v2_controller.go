@@ -16,7 +16,7 @@ type userV2Service struct {
 	service services.UserV2Service
 }
 
-func CreateUserV2Service(service services.UserV2Service) *userV2Service {
+func CreateUserController(service services.UserV2Service) *userV2Service {
 	return &userV2Service{service}
 }
 

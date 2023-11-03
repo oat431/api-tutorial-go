@@ -14,7 +14,7 @@ type userV2repository struct {
 	repository repository.UserRepository
 }
 
-func CreateUserV2Repository(repo repository.UserRepository) *userV2repository {
+func CreateUserDao(repo repository.UserRepository) *userV2repository {
 	return &userV2repository{repo}
 }
 

@@ -15,7 +15,7 @@ type userV2Dao struct {
 	dao dao.UserV2Dao
 }
 
-func CreateUserV2Dao(dao dao.UserV2Dao) *userV2Dao {
+func CreateUserService(dao dao.UserV2Dao) *userV2Dao {
 	return &userV2Dao{dao}
 }
 

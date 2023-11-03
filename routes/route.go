@@ -14,9 +14,9 @@ import (
 var (
 	DB             = configs.ConnectDB()
 	userRepository = repository.CreateUserRepository(DB)
-	userDao        = dao.CreateUserV2Repository(userRepository)
-	userService    = services.CreateUserV2Dao(userDao)
-	userController = controllers.CreateUserV2Service(userService)
+	userDao        = dao.CreateUserDao(userRepository)
+	userService    = services.CreateUserService(userDao)
+	userController = controllers.CreateUserController(userService)
 )
 
 func SetupRouter() *gin.Engine {
