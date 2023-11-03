@@ -99,4 +99,67 @@ api-tutorial-go/
 5. Create a Controller and link it  with the Service
 6. Link the controller with the routes
 
-and all the rest is learning by this example
+
+## Chapter 3: Playing with Database
+
+In this chapter just create a basic API with gin-gonic associated with a database via GORM lib
+
+you can check the code in the branch `chapter-3-playing-w-db`
+
+on this chapter we create the following endpoints:
+
+### Endpoints
+
+- POST: `api/v2/users/` : create a new user
+- GET : `api/v2/users/` : get all the users
+- GET : `api/v2/users/<id>` : get a specific user
+- PUT : `api/v2/users/<id>` : update a specific user
+- DELETE : `api/v2/users/<id>` : delete a specific user
+
+### project structure:
+
+``` bash
+api-tutorial-go/
+├─ configs/
+│  ├─ db_config.go
+│
+├─ controllers/
+│  ├─ user_v2_controller.go
+│  
+├─ dao/
+│  ├─ user_dao.go
+│
+├─ models/
+│  ├─ user.go
+│  
+├─ payload/
+│  ├─ request/
+│  │  ├─ user-request.go
+│  ├─ response/
+│  │  ├─ user-dto.go
+│  
+├─ repository/
+│  ├─ user_repository.go
+│
+├─ routes/
+│  ├─ route.go
+│  
+├─ services/
+│  ├─ user_v2_service.go
+│  
+├─ utils/
+│  ├─ dto-helper.go
+│  ├─ mock-users.go
+
+```
+
+### Simple API Implementation with DB
+
+1. Create a model
+2. Create a DTO (Data Transfer Object)
+3. Create a Request
+4. Create a Repository (ORM or raw SQL)
+5. Create a DAO (Data Access Object)
+6. Create a Service (Business Logic)
+7. Create a Controller and link it  with the Service
+8. Link the controller with the routes

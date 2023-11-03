@@ -8,6 +8,9 @@ import (
 type UserV2Dao interface {
 	GetAllUsers() []models.User
 	GetUserById(id string) models.User
+	CreateUser(user models.User) models.User
+	UpdateUser(user models.User) models.User
+	DeleteUser(user models.User)
 }
 
 type userV2repository struct {
@@ -24,4 +27,16 @@ func (userRepository *userV2repository) GetAllUsers() []models.User {
 
 func (userRepository *userV2repository) GetUserById(id string) models.User {
 	return userRepository.repository.FindByID(id)
+}
+
+func (userRepository *userV2repository) CreateUser(user models.User) models.User {
+	return userRepository.repository.Create(user)
+}
+
+func (userRepository *userV2repository) UpdateUser(user models.User) models.User {
+	return userRepository.repository.Update(user)
+}
+
+func (userRepository *userV2repository) DeleteUser(user models.User) {
+	userRepository.repository.Delete(user)
 }

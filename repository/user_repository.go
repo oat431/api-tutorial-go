@@ -8,6 +8,9 @@ import (
 type UserRepository interface {
 	GetAllUsers() []models.User
 	FindByID(id string) models.User
+	Create(user models.User) models.User
+	Update(user models.User) models.User
+	Delete(user models.User)
 }
 
 type userDB struct {
@@ -36,4 +39,27 @@ func (db *userDB) FindByID(id string) models.User {
 		panic(result.Error)
 	}
 	return user
+}
+
+func (db *userDB) Create(user models.User) models.User {
+	result := db.connection.Create(&user)
+	if result.Error != nil {
+		panic(result.Error)
+	}
+	return user
+}
+
+func (db *userDB) Update(user models.User) models.User {
+	result := db.connection.Save(&user)
+	if result.Error != nil {
+		panic(result.Error)
+	}
+	return user
+}
+
+func (db *userDB) Delete(user models.User) {
+	result := db.connection.Delete(&user)
+	if result.Error != nil {
+		panic(result.Error)
+	}
 }
