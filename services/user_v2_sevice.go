@@ -6,8 +6,21 @@ import (
 	"github.com/oat431/api-tutorial-go/utils"
 )
 
-func GetAllDBUsers() []response.UserDto {
-	users := dao.GetAllUsers()
+type UserV2Service interface {
+	GetAllDBUsers() []response.UserDto
+	GetAllDBUsersById(id string) response.UserDto
+}
+
+type userV2Dao struct {
+	dao dao.UserV2Dao
+}
+
+func CreateUserService(dao dao.UserV2Dao) *userV2Dao {
+	return &userV2Dao{dao}
+}
+
+func (userDao *userV2Dao) GetAllDBUsers() []response.UserDto {
+	users := userDao.dao.GetAllUsers()
 	var usersDto []response.UserDto
 	for _, user := range users {
 		userDto := utils.MapToUserDto(user)
@@ -16,8 +29,8 @@ func GetAllDBUsers() []response.UserDto {
 	return usersDto
 }
 
-func GetAllDBUsersById(id string) response.UserDto {
-	user := dao.GetUserById(id)
+func (userDao *userV2Dao) GetAllDBUsersById(id string) response.UserDto {
+	user := userDao.dao.GetUserById(id)
 	userDto := utils.MapToUserDto(user)
 	return userDto
 }
