@@ -220,3 +220,43 @@ func SetupRouter() *gin.Engine {
 ```
 
 ** mark that you need to enable CORS before setting up the routes
+
+## Chapter 5: Pagination
+
+This chapter we need to add pagination to our API to make it more efficient
+normally go lang community implement their own pagination but in this tutorial we will use `morkid/paginate` pagination
+
+### Focus on
+
+``` bash
+api-tutorial-go/
+├─ controllers/
+│  ├─ user_v2_controller.go
+│  
+├─ dao/
+│  ├─ user_dao.go
+│
+├─ payload/
+│  ├─ response/
+│  │  ├─ page_user_dto.go
+│  
+├─ repository/
+│  ├─ user_repository.go
+│
+├─ routes/
+│  ├─ route.go
+│  
+├─ services/
+│  ├─ user_v2_service.go
+│  
+├─ utils/
+│  ├─ dto-helper.go
+```
+
+### To install it run the following command
+
+``` bash
+go get github.com/morkid/paginate
+```
+
+then learning the `focus` on files

@@ -5,10 +5,12 @@ import (
 	"github.com/oat431/api-tutorial-go/payload/request"
 	"github.com/oat431/api-tutorial-go/payload/response"
 	"github.com/oat431/api-tutorial-go/utils"
+	"github.com/gin-gonic/gin"
 )
 
 type UserV2Service interface {
 	GetAllDBUsers() []response.UserDto
+	GetAllDBUsersPagination(c *gin.Context) response.PageUserDto
 	GetAllDBUsersById(id string) response.UserDto
 	CreateUser(user request.UserRequest) response.UserDto
 	UpdateUser(id string, user request.UserRequest) response.UserDto
@@ -31,6 +33,11 @@ func (userDao *userV2Dao) GetAllDBUsers() []response.UserDto {
 		usersDto = append(usersDto, userDto)
 	}
 	return usersDto
+}
+
+func (userDao *userV2Dao) GetAllDBUsersPagination(c *gin.Context) response.PageUserDto {
+	pages := userDao.dao.GetAllUsersPagination(c)
+	return utils.MapToPageUser(pages)
 }
 
 func (userDao *userV2Dao) GetAllDBUsersById(id string) response.UserDto {

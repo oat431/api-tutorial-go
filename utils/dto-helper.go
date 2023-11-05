@@ -3,6 +3,7 @@ package utils
 import (
 	"time"
 
+	"github.com/morkid/paginate"
 	"github.com/oat431/api-tutorial-go/models"
 	"github.com/oat431/api-tutorial-go/payload/request"
 	"github.com/oat431/api-tutorial-go/payload/response"
@@ -33,4 +34,26 @@ func MapToUserModel(request request.UserRequest) models.User {
 		Email:     request.Email,
 		Birthday:  request.Birthday,
 	}
+}
+
+func MapToPageUser(pages paginate.Page) response.PageUserDto {
+	var users []response.UserDto
+	user_model := pages.Items.(*[]models.User)
+	res := &user_model
+
+	for _, user := range **res {
+		userDto := MapToUserDto(user)
+		users = append(users, userDto)
+	}
+	var pageUserDto response.PageUserDto
+	pageUserDto.Items = users
+	pageUserDto.Page = pages.Page
+	pageUserDto.Size = pages.Size
+	pageUserDto.MaxPage = pages.MaxPage
+	pageUserDto.TotalPages = pages.TotalPages
+	pageUserDto.Total = pages.Total
+	pageUserDto.Last = pages.Last
+	pageUserDto.First = pages.First
+
+	return pageUserDto
 }
