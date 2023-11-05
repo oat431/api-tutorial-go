@@ -41,6 +41,7 @@ func SetupRouter() *gin.Engine {
 	userV2 := r.Group("/api/v2/users")
 	{
 		userV2.GET("/", userController.GetAllDBUsers)
+		userV2.GET("/pages", userController.GetAllDBUsersPagination)
 		userV2.GET("/:id", userController.GetAllDBUsersById)
 		userV2.POST("/", userController.CreateUser)
 		userV2.PUT("/:id", userController.UpdateUser)

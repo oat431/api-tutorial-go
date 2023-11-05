@@ -10,6 +10,7 @@ import (
 
 type UserV2Controller interface {
 	GetAllDBUsers(c *gin.Context)
+	GetAllDBUsersPagination(c *gin.Context)
 	GetAllDBUsersById(c *gin.Context)
 	CreateUser(c *gin.Context)
 	UpdateUser(c *gin.Context)
@@ -29,6 +30,11 @@ func (userV2Service *userV2Service) GetAllDBUsers(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"users": users,
 	})
+}
+
+func (userV2Service *userV2Service) GetAllDBUsersPagination(c *gin.Context) {
+	pagination := userV2Service.service.GetAllDBUsersPagination(c)
+	c.JSON(http.StatusOK, pagination)
 }
 
 func (userV2Service *userV2Service) GetAllDBUsersById(c *gin.Context) {

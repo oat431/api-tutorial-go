@@ -3,10 +3,13 @@ package dao
 import (
 	"github.com/oat431/api-tutorial-go/models"
 	"github.com/oat431/api-tutorial-go/repository"
+	"github.com/gin-gonic/gin"
+	"github.com/morkid/paginate"
 )
 
 type UserV2Dao interface {
 	GetAllUsers() []models.User
+	GetAllUsersPagination(c *gin.Context) paginate.Page 
 	GetUserById(id string) models.User
 	CreateUser(user models.User) models.User
 	UpdateUser(user models.User) models.User
@@ -23,6 +26,10 @@ func CreateUserDao(repo repository.UserRepository) *userV2repository {
 
 func (userRepository *userV2repository) GetAllUsers() []models.User {
 	return userRepository.repository.GetAllUsers()
+}
+
+func (userRepository *userV2repository) GetAllUsersPagination(c *gin.Context) paginate.Page {
+	return userRepository.repository.GetAllUsersPagination(c)
 }
 
 func (userRepository *userV2repository) GetUserById(id string) models.User {
