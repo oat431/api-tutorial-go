@@ -24,6 +24,8 @@ func SetupRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(cors.New(configs.SetupCORS()))
 
+	gh := configs.SetupGql()
+
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/hello-world", controllers.HelloWorld)
@@ -47,6 +49,13 @@ func SetupRouter() *gin.Engine {
 		userV2.PUT("/:id", userController.UpdateUser)
 		userV2.DELETE("/:id", userController.DeleteUser)
 	}
+
+	graph := r.Group("/graphql")
+	{
+		graph.GET("/", gh)
+		graph.POST("/", gh)
+	}
+
 	log.Println("Database connected")
 
 	return r
