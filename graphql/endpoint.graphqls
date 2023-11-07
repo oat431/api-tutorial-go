@@ -1,0 +1,9 @@
+schema {
+    query: Query
+}
+
+type Query {
+	GetAllDBUsers() : [UserDto]
+	GetAllDBUsersPagination(page: Int!, limit: Int!) : PageUserDto
+	GetAllDBUsersById(id: Int!) : UserDto
+}

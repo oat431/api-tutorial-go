@@ -10,6 +10,8 @@ import (
 	"github.com/oat431/api-tutorial-go/dao"
 	"github.com/oat431/api-tutorial-go/repository"
 	"github.com/oat431/api-tutorial-go/services"
+	"github.com/oat431/api-tutorial-go/resolver"
+	"github.com/oat431/api-tutorial-go/schema"
 )
 
 var (
@@ -18,13 +20,17 @@ var (
 	userDao        = dao.CreateUserDao(userRepository)
 	userService    = services.CreateUserService(userDao)
 	userController = controllers.CreateUserController(userService)
+
+	userResolver   = resolver.CreateUserResolver(userService)
+	userSchema     = schema.CreateUserSchema(userResolver)
+	rootSchema     = schema.CreateRootSchema(userSchema)
 )
 
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(cors.New(configs.SetupCORS()))
 
-	gh := configs.SetupGql()
+	gh := configs.SetupGql(rootSchema)
 
 	v1 := r.Group("/api/v1")
 	{

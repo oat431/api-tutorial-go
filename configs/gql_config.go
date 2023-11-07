@@ -6,10 +6,10 @@ import (
 	"github.com/graphql-go/handler"
 )
 
-func SetupGql() gin.HandlerFunc {
+func SetupGql(r *schema.RootSchema) gin.HandlerFunc {
 	return func(c *gin.Context) {
 			h := handler.New(&handler.Config{
-				Schema:   schema.CreateRootSchema().Root(),
+				Schema:   r.Root(),
 				Pretty:   true,
 				GraphiQL: true,
 			})

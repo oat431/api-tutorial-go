@@ -10,25 +10,33 @@ type Schema interface {
 	Root() *graphql.Schema
 }
 
-type rootSchema struct {
+type RootSchema struct {
+	userSchema UserSchema
 }
 
-func CreateRootSchema() *rootSchema {
-	return &rootSchema{}
+func CreateRootSchema(userSchema UserSchema) *RootSchema {
+	return &RootSchema{
+		userSchema: userSchema,
+	}
 }
 
-func (r *rootSchema) Query() *graphql.Object {
+func (r *RootSchema) Query() *graphql.Object {
 	return graphql.NewObject(graphql.ObjectConfig{
 		Name: "Query",
+		Fields: graphql.Fields{
+			"GetAllDBUsers" : r.userSchema.GetAllDBUsers(),
+			"GetAllDBUsersPagination" : r.userSchema.GetAllDBUsersPagination(),
+			"GetAllDBUsersById" : r.userSchema.GetAllDBUsersById(),
+		},
 	})
 }
 
-func (r *rootSchema) Mutation() *graphql.Object {
+func (r *RootSchema) Mutation() *graphql.Object {
 	mutation := graphql.ObjectConfig{Name: "Mutation"}
 	return graphql.NewObject(mutation)
 }
 
-func (r *rootSchema) Root() *graphql.Schema {
+func (r *RootSchema) Root() *graphql.Schema {
 	rootQuery := r.Query()
 	rootMutation := r.Mutation()
 	schema, _ := graphql.NewSchema(graphql.SchemaConfig{
