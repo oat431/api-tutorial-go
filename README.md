@@ -10,7 +10,8 @@
 4. Chapter 4: CORS
 5. Chapter 5: Pagination
 6. Chapter 6: GraphQL
-7. Chapter 7: Testing
+7. Chapter 7: API Documenting
+8. Chapter 8: Testing
 
 ## Project
 

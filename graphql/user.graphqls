@@ -1,0 +1,17 @@
+type UserDto {
+    id: Int
+    name: String
+    email: String
+    age: Int
+}
+
+type PageUserDto {
+    item : [UserDto]
+    page : Int
+    size : Int
+    maxPage : Int
+    totalPages : Int
+    total : Int
+    last : Boolean
+    first : Boolean
+}

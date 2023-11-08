@@ -47,9 +47,9 @@ func MapToPageUser(pages paginate.Page) response.PageUserDto {
 	}
 	var pageUserDto response.PageUserDto
 	pageUserDto.Items = users
-	pageUserDto.Page = pages.Page
+	pageUserDto.Page = pages.Page + 1
 	pageUserDto.Size = pages.Size
-	pageUserDto.MaxPage = pages.MaxPage
+	pageUserDto.MaxPage = pages.MaxPage + 1
 	pageUserDto.TotalPages = pages.TotalPages
 	pageUserDto.Total = pages.Total
 	pageUserDto.Last = pages.Last
