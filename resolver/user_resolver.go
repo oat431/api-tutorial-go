@@ -42,7 +42,7 @@ func (s *userService) GetAllDBUsersPagination(params graphql.ResolveParams) (int
 		page = page - 1
 	}
 
-	url := "http://localhost:8080/api/v2/users/pages?page=" + strconv.Itoa(page) + "&size=" +strconv.Itoa(size)
+	url := "https://try-gin-deploy.onrender.com/api/v2/users/pages?page=" + strconv.Itoa(page) + "&size=" +strconv.Itoa(size)
 	req, _ := http.NewRequest("GET", url, nil)
 	res, _ := http.DefaultClient.Do(req)
 	body, _ := ioutil.ReadAll(res.Body)
