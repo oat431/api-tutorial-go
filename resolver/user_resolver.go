@@ -2,7 +2,11 @@ package resolver
 
 import (
 	"strconv"
+	"net/http"
+	"io/ioutil"
+	"encoding/json"
 	"github.com/graphql-go/graphql"
+	"github.com/oat431/api-tutorial-go/payload/response"
 	"github.com/oat431/api-tutorial-go/services"
 )
 
@@ -29,9 +33,22 @@ func (s *userService) GetAllDBUsers(params graphql.ResolveParams) (interface{},e
 }
 
 func (s *userService) GetAllDBUsersPagination(params graphql.ResolveParams) (interface{},error) {
-	// pages := s.service.GetAllDBUsersPagination()
-	return nil,nil;
-	// return pages
+	page := params.Args["page"].(int)
+	size := params.Args["limit"].(int)
+	
+	if page <= 0 {
+		page = 1
+	} else {
+		page = page - 1
+	}
+
+	url := "http://localhost:8080/api/v2/users/pages?page=" + strconv.Itoa(page) + "&size=" +strconv.Itoa(size)
+	req, _ := http.NewRequest("GET", url, nil)
+	res, _ := http.DefaultClient.Do(req)
+	body, _ := ioutil.ReadAll(res.Body)
+	var data response.PageUserDto
+	json.Unmarshal(body, &data)
+	return data,nil;
 }
 
 func (s *userService) GetAllDBUsersById(params graphql.ResolveParams) (interface{},error) {
