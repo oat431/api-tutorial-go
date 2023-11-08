@@ -80,9 +80,18 @@ func (u *userResolver) GetAllDBUsers() *graphql.Field {
 }
 
 func (u *userResolver) GetAllDBUsersPagination() *graphql.Field {
+	args := graphql.FieldConfigArgument{
+		"page": &graphql.ArgumentConfig{
+			Type: graphql.Int,
+		},
+		"limit": &graphql.ArgumentConfig{
+			Type: graphql.Int,
+		},
+	}
 	field := graphql.Field{
 		Type: pageUserDtoType,
 		Description: "Get all DB users as Pagination",
+		Args: args,
 		Resolve: u.userResolver.GetAllDBUsersPagination,
 	}
 	return &field
