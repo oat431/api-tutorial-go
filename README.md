@@ -261,3 +261,51 @@ go get github.com/morkid/paginate
 ```
 
 then learning the `focus` on files
+
+## Chapter 6: Graphql
+
+This chapter we create another type of api which is `graphql` api using `graphql-go` lib
+
+### Focus on
+
+``` bash
+api-tutorial-go/
+├─ configs/
+│  ├─ gql_config.go
+│  
+├─ graphql/
+│  ├─ endpoint.graphqls
+│  ├─ user.graphqls
+│  
+├─ resolver/
+│  ├─ user_resolver.go
+│
+├─ routes/
+│  ├─ route.go 
+│  
+├─ schema/
+│  ├─ root_schema.go
+│  ├─ user_schema.go
+│
+├─ routes/
+│  ├─ route.go
+│  
+```
+
+### To install it run the following command
+
+``` bash
+go get github.com/graphql-go/graphql
+
+go get github.com/graphql-go/handler
+```
+
+### Steps to create a graphql api
+
+1. Create graphqls files in `graphql` folder
+2. Create resolver files in `resolver` folder
+3. Create schema files in `schema` folder
+4. linked the schema with the resolver in `root_schema.go`
+5. Create a config file in `configs` folder
+6. Create a route in `routes` folder
+
