@@ -6,7 +6,7 @@ type UserDto {
 }
 
 type PageUserDto {
-    item : [UserDto]
+    items : [UserDto]
     page : Int
     size : Int
     maxPage : Int
@@ -14,4 +14,11 @@ type PageUserDto {
     total : Int
     last : Boolean
     first : Boolean
+}
+
+input UserRequest {
+    firstname : String
+    lastname : String
+    email : String
+    birth_date : String
 }

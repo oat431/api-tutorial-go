@@ -7,3 +7,9 @@ type Query {
 	GetAllDBUsersPagination(page: Int!, limit: Int!) : PageUserDto
 	GetAllDBUsersById(id: Int!) : UserDto
 }
+
+type Mutation {
+	CreateUser(request: UserRequest!) : UserDto
+	UpdateUser(id:Int!, request: UserRequest!) : UserDto
+	DeleteUser(id: Int!) 
+}
