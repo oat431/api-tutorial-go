@@ -24,15 +24,22 @@ func (r *RootSchema) Query() *graphql.Object {
 	return graphql.NewObject(graphql.ObjectConfig{
 		Name: "Query",
 		Fields: graphql.Fields{
-			"GetAllDBUsers" : r.userSchema.GetAllDBUsers(),
-			"GetAllDBUsersPagination" : r.userSchema.GetAllDBUsersPagination(),
-			"GetAllDBUsersById" : r.userSchema.GetAllDBUsersById(),
+			"GetAllDBUsers":           r.userSchema.GetAllDBUsers(),
+			"GetAllDBUsersPagination": r.userSchema.GetAllDBUsersPagination(),
+			"GetAllDBUsersById":       r.userSchema.GetAllDBUsersById(),
 		},
 	})
 }
 
 func (r *RootSchema) Mutation() *graphql.Object {
-	mutation := graphql.ObjectConfig{Name: "Mutation"}
+	mutation := graphql.ObjectConfig{
+		Name: "Mutation",
+		Fields: graphql.Fields{
+			"CreateUser": r.userSchema.CreateUser(),
+			"UpdateUser": r.userSchema.UpdateUser(),
+			"DeleteUser": r.userSchema.DeleteUser(),
+		},
+	}
 	return graphql.NewObject(mutation)
 }
 
