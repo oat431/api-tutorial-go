@@ -9,9 +9,11 @@ import (
 	"github.com/oat431/api-tutorial-go/controllers"
 	"github.com/oat431/api-tutorial-go/dao"
 	"github.com/oat431/api-tutorial-go/repository"
-	"github.com/oat431/api-tutorial-go/services"
 	"github.com/oat431/api-tutorial-go/resolver"
 	"github.com/oat431/api-tutorial-go/schema"
+	"github.com/oat431/api-tutorial-go/services"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 var (
@@ -21,9 +23,9 @@ var (
 	userService    = services.CreateUserService(userDao)
 	userController = controllers.CreateUserController(userService)
 
-	userResolver   = resolver.CreateUserResolver(userService)
-	userSchema     = schema.CreateUserSchema(userResolver)
-	rootSchema     = schema.CreateRootSchema(userSchema)
+	userResolver = resolver.CreateUserResolver(userService)
+	userSchema   = schema.CreateUserSchema(userResolver)
+	rootSchema   = schema.CreateRootSchema(userSchema)
 )
 
 func SetupRouter() *gin.Engine {
@@ -60,6 +62,11 @@ func SetupRouter() *gin.Engine {
 	{
 		graph.GET("/", gh)
 		graph.POST("/", gh)
+	}
+
+	swagger := r.Group("/api/docs")
+	{
+		swagger.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	}
 
 	log.Println("Database connected")
