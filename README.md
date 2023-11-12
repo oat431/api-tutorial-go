@@ -5,13 +5,15 @@
 ## Chapter list
 
 1. Chapter 1: Project Setup
-2. Chapter 2: Basic API
-3. Chapter 3: Playing with Database
+2. Chapter 2: API
+3. Chapter 3: Database
 4. Chapter 4: CORS
 5. Chapter 5: Pagination
 6. Chapter 6: GraphQL
 7. Chapter 7: API Documenting
-8. Chapter 8: Testing
+8. Chapter 8: Environment Variable
+9. Chapter 9: Testing
+10. Chapter 10: Deploying
 
 ## Project
 
