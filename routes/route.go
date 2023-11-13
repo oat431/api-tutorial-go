@@ -8,6 +8,7 @@ import (
 	"github.com/oat431/api-tutorial-go/configs"
 	"github.com/oat431/api-tutorial-go/controllers"
 	"github.com/oat431/api-tutorial-go/dao"
+	"github.com/oat431/api-tutorial-go/docs"
 	"github.com/oat431/api-tutorial-go/repository"
 	"github.com/oat431/api-tutorial-go/resolver"
 	"github.com/oat431/api-tutorial-go/schema"
@@ -31,6 +32,7 @@ var (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(cors.New(configs.SetupCORS()))
+	docs.SwaggerInfo.BasePath = "/api"
 
 	gh := configs.SetupGql(rootSchema)
 
