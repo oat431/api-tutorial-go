@@ -25,6 +25,14 @@ func CreateUser(c *gin.Context) {
 	})
 }
 
+// @Summary Get all mock user
+// @Schemes
+// @Description do ping
+// @Tags Users V1
+// @Accept json
+// @Produce json
+// @Success 200
+// @Router /v1/users/ [get]
 func GetAllUsers(c *gin.Context) {
 	users := services.GetAllUsers()
 	c.JSON(http.StatusOK, gin.H{
@@ -32,6 +40,16 @@ func GetAllUsers(c *gin.Context) {
 	})
 }
 
+// @summary Get mock user by id
+// @Schemes
+// @description  Get mock user by given id
+// @tags Users V1
+// @id GetUserById
+// @param id path string true "id of mock user"
+// @Produce json
+// @Accept json
+// @Success 200
+// @Router /v1/users/{id} [get]
 func GetUserById(c *gin.Context) {
 	id := c.Params.ByName("id")
 	user_id, err := strconv.Atoi(id)

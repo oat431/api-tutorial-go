@@ -1,4 +1,37 @@
 info:
   contact: {}
-paths: {}
+paths:
+  /v1/users/:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get all mock user
+      tags:
+      - Users V1
+  /v1/users/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get mock user by given id
+      operationId: GetUserById
+      parameters:
+      - description: id of mock user
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get mock user by id
+      tags:
+      - Users V1
 swagger: "2.0"
